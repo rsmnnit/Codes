@@ -1,0 +1,80 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf(i) scanf("%lld",&i)
+#define sfd(a,b) scanf("%lld%lld",&a,&b)
+#define pf(a) printf("%lld\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+#define pb push_back
+int main()
+{
+ll t;
+sf(t);
+while(t--){
+	ll n,i,j,k,l,a[1009],m[1009]={0};
+	sf(n);
+	set<ll>v[n+2];
+	set<ll>::iterator it;
+	f(i,0,n)
+	{
+		sf(a[i]);
+	}
+	f(i,0,n)
+	{
+		v[i].insert(i);
+		m[i]=1;
+		f(j,i+1,n)
+		{
+			if(a[j]==a[i]){
+			v[i].insert(j);
+			m[j]=1;}
+		}
+		v[i].insert(n);
+	}
+	ll an=0,pa=0,pan=0;
+	f(i,0,n)
+	{
+		set<ll>s;
+		map<ll,ll>mp;
+		mp[a[i]]=1;
+		for(it=v[i].begin();it!=v[i].end();it++)
+		s.insert(*it);
+		it=s.begin();
+		ll p= *it;
+		it++;
+		pa=0;
+		for(;it!=s.end();it++)
+		{
+			an+=((*it-p)*(*it-p-1))/2;
+			pa+=((*it-p)*(*it-p-1))/2;
+			p= *it;
+			
+		}
+		pan =pa;
+		f(j,i+1,n-1)
+		{
+			
+			if(mp[a[j]]==0){
+			for(it=v[j].begin();it!=v[j].end() && *it!=n;it++)
+			{
+				set<ll>::iterator lo;
+				set<ll>::iterator up;
+				lo=s.lower_bound(*it);
+				lo--;
+				
+				up=s.upper_bound(*it);
+				pan-=((*up -*lo)*(*up- *lo-1))/2;
+				pan+=((*up -*it)*(*up- *it-1))/2+((*it -*lo)*(*it- *lo-1))/2;
+				s.insert(*it);
+			
+			}
+			an+=pan;
+			mp[a[j]]=1;
+			}
+			else an+=pan;
+		}
+	}
+	pf(an);
+	}
+return 0;
+}

@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+char s1[10001][102],s2[10001][102];
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		char s[110];
+		int i,j,f=1;
+		scanf("%s",s);
+		stack<char>st;
+		for(i=0;s[i]!='\0';i++)
+		{
+			if(s[i]=='('||s[i]=='['||s[i]=='{')
+			st.push(s[i]);
+			else
+			{
+				if(!st.empty())
+				{
+					if(s[i]==')')
+					{
+						if(!(st.top()=='('))
+						{
+							f=0;break;
+						}
+					}
+					else if(s[i]==']')
+					{
+						if(!(st.top()=='['))
+						{
+							f=0;break;
+						}
+					}
+					else if(s[i]=='}')
+					{
+						if(!(st.top()=='{'))
+						{
+							f=0;break;
+						}
+					}
+					st.pop();
+				}
+				else {
+				f=0; break;
+				}
+			}
+		}
+		if(st.size()!=0)
+		f=0;
+		if(f)
+		printf("yes\n");
+		else
+		printf("no\n");
+		
+	
+	}
+	
+return 0;	
+}
