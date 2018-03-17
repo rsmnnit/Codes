@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		long long r,g,b,i,an=0,k;
+		scanf("%lld%lld%lld%lld",&r,&g,&b,&k);	
+		an
+	}
+return 0;
+}

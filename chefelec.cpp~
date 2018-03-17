@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf(i) scanf("%lld",&i)
+#define sfd(a,b) scanf("%lld%lld",&a,&b)
+#define pf(a) printf("%lld\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+int main()
+{
+ll t;
+sf(t);
+while(t--){
+ 	ll a[100005],n,i,j,k,f=0,p=0,an=0;
+ 	char s[100002];
+ 	sf(n);
+ 	scanf("%s",s);
+ 	f(i,0,n)
+ 	sf(a[i]);
+ 	i=0;
+ 	while(s[i]!='1')
+ 	i++;
+ 	an=a[i]-a[0];
+ 	for(j=i;j<n;j++)
+ 	{
+ 		if(s[j]=='1')
+ 		{pf(f);
+ 		if(j){
+ 		p=max(p,a[j]-a[j-1]);
+ 			f+=a[j]-a[j-1];
+ 			}
+ 			an+=f-p;
+ 			f=0;
+ 			p=0;
+ 		}
+ 		else{
+ 			p=max(p,a[j]-a[j-1]);
+ 			f+=a[j]-a[j-1];
+ 		}
+ 	}
+ 	if(s[n-1]!='1')
+ 	an+=f;
+ 	
+ 	pf(an);
+ }
+return 0;
+}

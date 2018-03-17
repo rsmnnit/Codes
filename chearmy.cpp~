@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf(i) scanf("%lld",&i)
+#define sfd(a,b) scanf("%lld%lld",&a,&b)
+#define pf(a) printf("%lld\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+int main()
+{
+ll t;
+sf(t);
+while(t--){
+	ll n,i,j,k=1,c=0,a[10];
+	a[0]=0;a[1]=2;a[2]=4;a[3]=6;a[4]=8;
+	cin>>n;
+	n-=1;
+	stack <int>st;
+	while(n)
+	{
+		st.push(n%5);
+		n/=5;
+	}
+	while(!st.empty())
+	{
+		cout<<a[(int)(st.top())];
+		st.pop();
+	}
+	printf("\n");
+}
+ 
+return 0;
+}
