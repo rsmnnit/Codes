@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+long long pairs[400001];
+ 
+ 
+long long square(long long n) {
+    return n * n;
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.precision(10);
+    cout << fixed;
+ 
+    int T;
+    cin >> T;
+    while (T --> 0) {
+        int N;
+        cin >> N;
+        
+        for (int i = 1; i <= N; i++) {
+            pairs[i] = square(N / i);
+        }
+ 
+        long long result = 0;
+        for (int i = N; i > 0; i--) {
+            result -= i;
+            if (pairs[i] != 0) {
+                for (int j = i * 2; j <= N; j += i) {
+                    pairs[i] -= pairs[j];
+                }
+            }
+            result += pairs[i] * i;
+        }
+ 
+        cout << result / 2 << '\n';
+    }
+    return 0;
+}
+

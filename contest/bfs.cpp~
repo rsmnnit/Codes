@@ -1,0 +1,48 @@
+#include<iostream>
+#include<queue>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
+bool vis[100];
+void dfs(vector<int>v[100],int k){
+	cout<<k<<endl;
+	vis[k]=true;
+	for(int i=0;i<v[k].size();i++){
+		if(!vis[v[k][i]])
+		dfs(v,v[k][i]);
+	}
+	
+}
+
+int main(){
+	int  n,m,i,j,k;
+	cin>>n>>m;
+	vector<int>v[n+1];
+	int x,y;
+	for(i=0;i<m;i++){
+		cin>>x>>y;
+		v[x].push_back(y);
+	}
+	//bfs
+	queue<int>q;
+	
+	memset(vis,false,sizeof vis);
+	q.push(2);
+	vis[2]=true;
+	while(!q.empty()){
+		int p = q.front();
+		cout<<p<<endl;
+		q.pop();
+		for(i=0;i<v[p].size();i++){
+		if(!vis[v[p][i]])
+		q.push(v[p][i]);
+		vis[v[p][i]]=true;
+		}
+	}
+	
+	//dfs
+	cout<<"dfs"<<endl;
+	memset(vis,false,sizeof vis);
+	dfs(v,2);
+
+}

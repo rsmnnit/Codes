@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf(i) scanf("%lld",&i)
+#define sfd(a,b) scanf("%lld%lld",&a,&b)
+#define pf(a) printf("%lld\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+int main()
+{
+ll t;
+sf(t);
+while(t--){
+	char s[1000001],s2[1000001];
+	int i,j,k,m,n,p00=0,p01=0,p10=0,p11=0;
+	scanf("%s%s",s,s2);
+	for(i=0;s[i]!='\0';i++)
+	{
+		if(s[i]=='0' && s2[i]=='0')
+		p00++;
+		else if(s[i]=='0' && s2[i]=='1')
+		p01++;
+		else
+		if(s[i]=='1' && s2[i]=='0')
+		p10++;
+		else
+		if(s[i]=='1' && s2[i]=='1')
+		p11++;
+	}
+	if(p00 || p01)
+	{
+		if(p01!=0&&p10!=0)
+		printf("Lucky Chef\n%d\n",max(p01,p10));
+		else if(p10==0&&p11)
+		printf("Lucky Chef\n%d\n",max(p01,p10));
+		else if()
+	}
+	else
+	{
+		printf("Unlucky Chef\n");
+		
+	}
+}
+ 
+return 0;
+}

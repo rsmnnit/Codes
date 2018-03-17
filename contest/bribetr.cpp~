@@ -1,0 +1,91 @@
+			/* Radheshyam Lodhi
+			radheshyamlodhi64@gmail.com
+			CSE-MNNIT Allahabad */
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sfi(i) scanf("%d",&i)
+#define sfid(a,b) scanf("%d%d",&a,&b)
+#define sfl(i) scanf("%lld",&i)
+#define sfld(a,b) scanf("%lld%lld",&a,&b)
+#define pfl(a) printf("%lld\n",a)
+#define pfi(a) printf("%d\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+#define pb push_back
+#define MP make_pair
+#define F first
+#define S second
+#define pf printf
+#define sf scanf
+#define gc() getchar_unlocked()
+#define mod (1e9+7)
+
+int main()
+{
+int t;
+sfi(t);
+while(t--){
+	ll n,k,i,j,x;
+	vector<ll>v;
+	sfld(n,k);
+	n=pow(2,n);
+	f(i,0,n)
+	{
+		sfl(x);
+		v.pb(x);
+	}
+	ll f=0,c=0;
+	while(v.size()>1 && !f){
+	vector<ll>vv;
+	
+		for(i=0;i<v.size();i+=2)
+		{
+			if(i==0)
+			{
+				if(v[1]-v[0]>k)
+				{
+					f=1;break;
+				}
+				if(v[i]<v[1])
+				c++;
+				vv.pb(v[0]);
+				continue;
+			}
+			if(abs(v[i]-v[i+1])>k)
+			vv.pb(max(v[i],v[i+1]));
+			else {
+				if(v[0]>max(v[i],v[i+1]))
+				vv.pb(max(v[i],v[i+1]));
+				else{
+					if(v[0]-min(v[i],v[i+1])>k)
+					{
+						c++;
+						vv.pb(min(v[i],v[i+1]));
+						f=1;break;
+					}
+					else{
+					
+						
+					}
+				}
+			}
+			
+		}
+		v.clear();
+		v=vv;
+		f(i,0,vv.size())
+		{
+			pf("%lld ",vv[i]);
+		}
+		pf("\n");
+		
+	}
+	if(f)
+	pf("-1\n");
+	else pfl(c);
+	pf("end\n");
+
+}
+ 
+return 0;
+}

@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef vector<int> vi;
+ 
+const int N = 100005;
+const int P = 1000005;
+ 
+vi primes;
+bool done[P];
+ 
+void pre() {
+	for (int i=2; i<P; i++) {
+		if (!done[i]) {
+			primes.push_back(i);
+			for (int j=2*i; j<P; j+=i)
+				done[j] = true;
+		}
+	}
+}
+ 
+ll A, B;
+ll factor[N];
+vector<int8_t> div_cnt[N];
+map<vector<int8_t>, ll> score;
+ 
+ll getScore(vector<int8_t> &divisor) {
+	if (divisor.empty())
+		return 1;
+	if (divisor.size() == 1)
+		return divisor[0] * (divisor[0] + 3) / 2;
+ 
+	auto &mit = score[divisor];
+	if (mit > 0)
+		return mit;
+ 
+	ll f = 1;
+	for (auto cnt : divisor) {
+		f *= cnt + 1;
+	}
+	divisor[0]--;
+	for (int i=0; i < divisor.size()-1 && divisor[i] < divisor[i+1]; i++)
+		swap(divisor[i], divisor[i+1]);
+ 
+	if (divisor.back() == 0)
+		divisor.pop_back();
+ 
+	return mit = f + getScore(divisor);
+}
+ 
+int main() {
+	pre();
+	cin >> A >> B;
+ 
+	for (ll i=A; i<=B; i++) {
+		factor[i-A] = A;
+	}
+	for (auto pr : primes) {
+		for (ll ppow=pr, cnt=1; ppow <= B; ppow *= pr, cnt++) {
+			if (cnt == 1)
+				for (ll i = ((A-1)/ppow + 1) * ppow; i <= B; i += ppow)
+					div_cnt[i-A].push_back(1), factor[i-A] /= pr;
+			else
+				for (ll i = ((A-1)/ppow + 1) * ppow; i <= B; i += ppow)
+					div_cnt[i-A].back() = cnt, factor[i-A] /= pr;
+		}
+	}
+ 
+	for (int i=0; i <= B-A; i++) {
+		if (factor[i] > 1)
+			div_cnt[i].push_back(1);
+		sort(div_cnt[i].rbegin(), div_cnt[i].rend());
+	}
+ 
+	ll ans = 0;
+	for (int i=0; i <= B-A; i++) {
+		if (!div_cnt[i].empty())
+			ans += getScore(div_cnt[i]);
+	}
+ 
+	cout << ans << endl;
+ 
+	return 0;
+}
