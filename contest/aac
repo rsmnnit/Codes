@@ -1,0 +1,26 @@
+pf("## %lld %lld\n",l.size(),r.size());
+	show(l);
+	show(r);
+	 ll i,j;
+	 for(i=0,j=0;i<l.size()&&j<r.size();){
+		if(l[i]<r[j]){
+			tree[node].u.pb(l[i]);
+			pfl(l[i]);
+			i++;
+		}
+		else{
+			tree[node].u.pb(r[j]);
+			pfl(r[i]);
+			j++;
+		}
+	}
+
+	while(i++ <l.size()){
+		tree[node].u.pb(l[i]);
+		pfl(l[i]);
+	}
+	while(j++ <r.size()){
+		tree[node].u.pb(r[j]);
+		pfl(r[i]);
+	}
+

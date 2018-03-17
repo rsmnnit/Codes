@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf(i) scanf("%lld",&i)
+#define sfd(a,b) scanf("%lld%lld",&a,&b)
+#define pf(a) printf("%lld\n",a)
+#define f(i,a,b) for(i=a;i<b;i++)
+int main()
+{
+ll f=0,n,i,j,k,a,b;
+char s[13];
+sf(n);
+f(i,0,n){
+scanf("%s",s);
+sfd(a,b);
+if(a>=2400 &&b>a)
+f=1;
+}
+if(f)
+cout<<"YES"<<endl;
+else cout<<"NO"<<endl;
+return 0;
+}

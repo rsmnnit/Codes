@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ 	int n,m,i,j,h[200]={0};
+ 	scanf("%d%d",&n,&m);
+ 	char ch;
+ 	for(i=0;i<n;i++)
+ 	for(j=0;j<m;j++)
+ 	{
+ 	getchar();
+ 		scanf("%c",&ch);
+ 		
+ 		h[ch]+=1;
+ 	}
+ 	if(h['C']==0 && h['M']==0 && h['Y']==0)
+ 	printf("#Black&White\n");
+ 	else printf("#Color\n");
+ 	
+return 0;
+}#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ 	int n,m,i,j,h[200]={0};
+ 	scanf("%d%d",&n,&m);
+ 	char ch;
+ 	for(i=0;i<n;i++)
+ 	for(j=0;j<m;j++)
+ 	{
+ 	getchar();
+ 		scanf("%c",&ch);
+ 		
+ 		h[ch]+=1;
+ 	}
+ 	if(h['C']==0 && h['M']==0 && h['Y']==0)
+ 	printf("#Black&White\n");
+ 	else printf("#Color\n");
+ 	
+return 0;
+}

@@ -1,0 +1,26 @@
+pf("## %lld %lld\n",tree[node*2].u.size(),tree[node*2+1].u.size());
+	show(tree[node*2].u);
+	show(tree[node*2+1].u);
+	 ll i,j;
+	 for(i=0,j=0;i<tree[node*2].u.size()&&j<tree[node*2+1].u.size();){
+		if(tree[node*2].u[i]<tree[node*2+1].u[j]){
+			tree[node].u.pb(tree[node*2].u[i]);
+			pfl(tree[node*2].u[i]);
+			i++;
+		}
+		else{
+			tree[node].u.pb(tree[node*2+1].u[j]);
+			pfl(tree[node*2+1].u[i]);
+			j++;
+		}
+	}
+
+	while(i++ <tree[node*2].u.size()){
+		tree[node].u.pb(tree[node*2].u[i]);
+		pfl(tree[node*2].u[i]);
+	}
+	while(j++ <tree[node*2+1].u.size()){
+		tree[node].u.pb(tree[node*2+1].u[j]);
+		pfl(tree[node*2+1].u[i]);
+	}
+

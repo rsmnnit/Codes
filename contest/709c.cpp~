@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+string s;
+int i,n,f=0;
+cin>>s;
+for(i=0;s[i]!='\0';i++){
+if(s[i]>'a')
+{f=1;
+while(s[i]>'a'){
+if(s[i]!='z')
+s[i]=s[i]-1;
+else s[i]='a';
+i++;
+}
+break;
+}
+
+}
+if(!f)
+s[n-1]='z';
+cout<<s<<endl;
+return 0;
+}
